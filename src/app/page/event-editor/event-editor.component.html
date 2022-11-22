@@ -1,32 +1,52 @@
-
 <div class="row">
   <div class="col-8 offset-2">
-    <form #eventFrom="ngForm" (ngSubmit)="onFormSubmit(eventFrom)">
+    <form #eventForm="ngForm" (ngSubmit)="onUpdate(eventForm)">
       <div class="form-group">
-        <label>Event</label>
-        <input [(ngModel)]="event.name" name="name" type="text"
-          class="form-control" pattern=".{8,}" required>
-        <div [hidden]="eventFrom.controls.name?.valid" class="error-message">
-          Event title has to be minimum 8 characters.
+        <label>Event name</label>
+        <input
+          [(ngModel)]="event.name"
+          name="name"
+          type="text"
+          class="form-control"
+          pattern=".{8,}"
+          required
+        />
+        <div [hidden]="eventForm.controls['name']?.valid" class="error-message">
+          Event title is required and has to be minimum 8 characters.
         </div>
       </div>
       <div class="form-group">
         <label>Date</label>
-        <input [(ngModel)]="event.date" name="date" type="text"
-          class="form-control" required>
+        <input
+          [(ngModel)]="event.date"
+          name="date"
+          type="text"
+          class="form-control"
+          required
+        />
       </div>
       <div class="form-group">
         <label>Time</label>
-        <input [(ngModel)]="event.time" name="time" type="text"
-          class="form-control" required>
+        <input
+          [(ngModel)]="event.time"
+          name="time"
+          type="text"
+          class="form-control"
+          required
+        />
       </div>
       <div class="form-group">
         <label>Location</label>
-        <input [(ngModel)]="event.location" name="location" type="text"
-          class="form-control" required>
+        <input
+          [(ngModel)]="event.location"
+          name="location"
+          type="text"
+          class="form-control"
+          required
+        />
       </div>
-      <button [disabled]="productFrom.invalid" class="btn btn-block btn-primary">
-        <i class="fa fa-save"></i>
+      <button [disabled]="eventForm.invalid" class="btn btn-block btn-primary" type="submit">
+        <i class="fa fa-save"></i>  Save new Event
       </button>
     </form>
   </div>
